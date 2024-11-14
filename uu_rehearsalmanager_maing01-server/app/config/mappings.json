@@ -1,0 +1,76 @@
+{
+  "{vendor}-{uuApp}-{uuSubApp}": {
+    "useCaseMap": {
+      "sys/uuAppWorkspace/init": {
+        "realization": "api/controllers/RehearsalmanagerMainController.init",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "sys/uuAppWorkspace/load": {
+        "realization": "api/controllers/RehearsalmanagerMainController.load",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "sys/uuAppWorkspace/loadBasicData": {
+        "realization": "api/controllers/RehearsalmanagerMainController.loadBasicData",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "defaultUve": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "UVE"
+      },
+      "sys/uuAppWorkspace/initUve": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "UVE"
+      },
+      "sys/uuAppWorkspace/apiConsole": {
+        "realization": "api-console.html",
+        "httpMethod": "GET",
+        "type": "UVE"
+      },
+      "scene/create": {
+        "realization": "api/controllers/SceneController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "scene/list": {
+        "realization": "api/controllers/SceneController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "scene/update": {
+        "realization": "api/controllers/SceneController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "location/list": {
+        "realization": "api/controllers/LocationController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "location/create": {
+        "realization": "api/controllers/LocationController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "rehearsal/create": {
+        "realization": "api/controllers/RehearsalController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "rehearsal/list": {
+        "realization": "api/controllers/RehearsalController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "rehearsal/update": {
+        "realization": "api/controllers/RehearsalController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      }
+    }
+  }
+}

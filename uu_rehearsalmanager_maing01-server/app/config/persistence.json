@@ -1,0 +1,25 @@
+{
+  "uuSubAppDataStore": {
+    "primary": {
+      "type": "uuAppObjectStore",
+      "realization": "MongoDB",
+      "schemaMap": {
+        "rehearsalmanagerMain": {
+          "realization": "dao/RehearsalmanagerMainMongo"
+        },
+        "scene": {
+          "realization": "dao/SceneMongo",
+          "maxNoi": 1000
+        },
+        "location": {
+          "realization": "dao/LocationMongo",
+          "maxNoi": 1000
+        },
+        "rehearsal": {
+          "realization": "dao/RehearsalMongo",
+          "MaxNoi": 1000
+        }
+      }
+    }
+  }
+}
