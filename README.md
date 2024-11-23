@@ -6,15 +6,15 @@
 
 | Úkol                                        | Priorita | Stav | Termín   |
 |---------------------------------------------|----------|------|----------|
-| **getPlays** - Získání seznamu her           | 🔴       | 🚧   | 25. 11. |
-| **getActors** - Získání seznamu herců         | 🔴       | 🚧   | 25. 11. |
-| **getScenesByPlay** - Získání scén podle hry  | 🔴       | 🚧   | 25. 11. |
-| **createScene** - Vytvoření nové scény        | 🔴       | 🚧   | 30. 11. |
-| **updateScene** - Aktualizace scény           | 🟡       | 🚧   | 05. 12. |
-| **deleteScene** - Smazání scény               | 🟡       | 🚧   | 05. 12. |
-| **assignActorToFigure** - Přiřazení herce k postavě ve scéně | 🔴       | 🚧   | 10. 12. |
-| **finishSceneConfiguration** - Dokončení konfigurace scény | 🟡       | 🚧   | 10. 12. |
-| **finishPlayConfiguration** - Dokončení konfigurace hry | 🟡       | 🚧   | 15. 12. |
+| **getPlays** - Získání seznamu her           | 🔴       | 🚧   | 7. 12. |
+| **getActors** - Získání seznamu herců         | 🔴       | 🚧   | 7. 12. |
+| **getScenesByPlay** - Získání scén podle hry  | 🔴       | 🚧   | 7. 12. |
+| **createScene** - Vytvoření nové scény        | 🔴       | 🚧   | 7. 12. |
+| **updateScene** - Aktualizace scény           | 🟡       | 🚧   | 7. 12. |
+| **deleteScene** - Smazání scény               | 🟡       | 🚧  | 7. 12. |
+| **assignActorToFigure** - Přiřazení herce k postavě ve scéně | 🔴       | 🔜   | 14. 12. |
+| **finishSceneConfiguration** - Dokončení konfigurace scény | 🟡       | 🔜   | 14. 12. |
+| **finishPlayConfiguration** - Dokončení konfigurace hry | 🟡       | 🔜   | 14. 12. |
 
 
 
@@ -22,27 +22,27 @@
 
 ## Jindra
 
-### Propojování routy dashboard s backendem
+### Propojit routu dashboard s backendem
 
 | Úkol                                          | Priorita | Stav | Termín   |
 |-----------------------------------------------|----------|------|----------|
-| **getActors** - Získání seznamu herců               | 🔴       | 🚧   | 25. 11. |
-| **getPlays** - Získání seznamu her                  | 🔴       | 🚧   | 25. 11. |
-| **getScenesByPlay** - Získání scén podle hry         | 🔴       | 🚧   | 25. 11. |
-| **getRehearsals** - Získání seznamu zkoušek          | 🔴       | 🚧   | 30. 11. |
-| **getLocations** - Získání seznamu lokalit           | 🔴       | 🚧   | 30. 11. |
+| **getActors** - Získání seznamu herců               | 🔴       | 🚧   | 7. 12. |
+| **getPlays** - Získání seznamu her                  | 🔴       | 🚧   | 7. 12. |
+| **getScenesByPlay** - Získání scén podle hry         | 🔴       | 🚧   | 7. 12. |
+| **getRehearsals** - Získání seznamu zkoušek          | 🔴       | 🚧   | 7. 12. |
+| **getLocations** - Získání seznamu lokalit           | 🔴       | 🚧   | 7. 12. |
 | **getNotifications** - Získání seznamu notifikací pro uživatele | 🟡       | 🚧   | 05. 12. |
-| **createRehearsal** - Vytvoření nové zkoušky         | 🔴       | 🚧   | 05. 12. |
-| **updateRehearsal** - Aktualizace zkoušky            | 🔴       | 🚧   | 05. 12. |
-| **deleteRehearsal** - Smazání zkoušky                | 🔴       | 🚧   | 10. 12. |
+| **createRehearsal** - Vytvoření nové zkoušky         | 🔴       | 🚧   | 7. 12. |
+| **updateRehearsal** - Aktualizace zkoušky            | 🔴       | 🚧   | 7. 12. |
+| **deleteRehearsal** - Smazání zkoušky                | 🔴       | 🚧   | 7. 12. |
 | **updatePresenceStatus** - Aktualizace stavu přítomnosti herce na zkoušce | 🔴       | 🚧   | 10. 12. |
-| **createLocation** - Vytvoření nové lokality          | 🔴       | 🚧   | 10. 12. |
-| **updateLocation** - Aktualizace lokality             | 🟡       | 🚧   | 15. 12. |
-| **deleteLocation** - Smazání lokality                 | 🟡       | 🚧   | 15. 12. |
-| **setActiveLocation** - Nastavení lokality jako aktivní | 🟡       | 🚧   | 20. 12. |
-| **setInactiveLocation** - Nastavení lokality jako neaktivní | 🟡       | 🚧   | 20. 12. |
-| **createNotification** - Vytvoření nové notifikace   | 🟢       | 🚧   | 20. 12. |
-| **markNotificationAsSeen** - Označení notifikace jako přečtené | 🟢       | 🚧   | 25. 12. |
+| **createLocation** - Vytvoření nové lokality          | 🔴       | 🔜   | 14. 12. |
+| **updateLocation** - Aktualizace lokality             | 🟡       | 🔜   | 14. 12. |
+| **deleteLocation** - Smazání lokality                 | 🟡       | 🔜   | 14. 12. |
+| **setActiveLocation** - Nastavení lokality jako aktivní | 🟡       | 🔜   | 14. 12. |
+| **setInactiveLocation** - Nastavení lokality jako neaktivní | 🟡       | 🔜   | 14. 12. |
+| **createNotification** - Vytvoření nové notifikace   | 🟢       | 🔜   | 14. 12. |
+| **markNotificationAsSeen** - Označení notifikace jako přečtené | 🟢       | 🔜   | 14. 12. |
 
 
 
@@ -50,11 +50,13 @@
 
 ## Patrik
 
+### Dodělat dokumentaci frontendu
+
 | Úkol                                               | Priorita | Stav | Termín   |
 |----------------------------------------------------|----------|------|----------|
-| Dodělat dokumentaci frontendu a rozdělit to         | 🔴       | 🚧   | 15. 12. |
-| - Dokumentace jednotlivých komponent - dashboard     | 🔴       | 🚧   | 15. 12. |
-| - Dokumentace jednotlivých komponent - create-play   | 🔴       | 🚧   | 15. 12. |
+| - Dokumentace jednotlivých komponent - dashboard     | 🔴       | 🚧   | 27. 11. |
+| - Dokumentace jednotlivých komponent - create-play   | 🔴       | 🚧   | 27. 11. |
+| - Pomoci Jindrovi a Sisi s propojováním frontendu s backendem   | 🔴       | 🚧   | 14. 12. |
 
 
 
@@ -64,13 +66,12 @@
 
 | Úkol                                                    | Priorita | Stav | Termín   |
 |---------------------------------------------------------|----------|------|----------|
-| Poklikat všechno ve SprintManovi                         | 🔴       | 🚧   | 12. 12. |
-| Doupravit detaily frontendu s mocky                      | 🔴       | 🚧   | 15. 12. |
-| Naplánovat další kroky                                    | 🟡       | 🚧   | 20. 12. |
-| Naplánovat poslední sprint                                | 🟡       | 🚧   | 20. 12. |
-| Meeting pro ukázku frontendu s mocky vývojářům           | 🟡       | 🚧   | 25. 12. |
-
-
+| Poklikat všechno ve SprintManovi                         | 🔴       | 🚧   | 25. 11. |
+| Doupravit detaily frontendu s mocky                      | 🔴       | 🚧   | 26. 11. |
+| Naplánovat další kroky                                    | 🟡       | 🚧   | 27. 11. |
+| Naplánovat poslední sprint                                | 🟡       | 🔜   | 2. 12. |
+| Meeting pro ukázku frontendu s mocky vývojářům           | 🟡       | 🔜   | ?. 12. |
+| Pomáhat, kde je potřeba         | 🟡       | 🚧   | ?. 12. |
 
 ---
 
