@@ -108,7 +108,7 @@
 
 ---
 
-### Aplikační model 
+### Aplikační model (Dokumentace)
 - [Routy](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=6706864a590f3b66b6cb708e)
 - [Dashboard komponenty](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=6706864a590f3b66b6cb709b)
 - [CreatePlay komponenty](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=67264fe35d90e7bb6ce1b1c8)
