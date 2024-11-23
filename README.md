@@ -1,5 +1,5 @@
 # Aktuální stav 
-### Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily.
+### Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily. Tým najíždí na propojování frontendu s backendem. 
 
 # 🛠️ Rozdělení Úkolů
 
