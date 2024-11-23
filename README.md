@@ -1,5 +1,5 @@
 # Aktuální stav 
-### Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily. Tým najíždí na propojování frontendu s backendem. 
+### Dokumentace je prakticky hotová. Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily pro úplné doknočení dokumentace i frontendu s mocky. Tým najíždí na propojování frontendu s backendem. 
 
 # 🛠️ Rozdělení Úkolů
 - Před implementací si budete muset zjistit jména funkcí a endpointů na backendu (psal jsem to tam podle toho, co by náš frontend měl potřebovat) 
@@ -73,6 +73,7 @@
 | Poklikat všechno ve SprintManovi                         | 🔴       | 🚧   | 25. 11. |
 | Doupravit detaily frontendu s mocky                      | 🔴       | 🚧   | 26. 11. |
 | Naplánovat další kroky                                    | 🟡       | 🚧   | 27. 11. |
+| Dát nový frontend do našeho školního repa                                    | 🟡       | 🚧   | 27. 11. |
 | Naplánovat poslední sprint                                | 🟡       | 🔜   | 2. 12. |
 | Meeting pro ukázku frontendu s mocky vývojářům           | 🟡       | 🔜   | ?. 12. |
 | Pomáhat, kde je potřeba         | 🟡       | 🚧   | ?. 12. |
