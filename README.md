@@ -2,6 +2,7 @@
 ### Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily. Tým najíždí na propojování frontendu s backendem. 
 
 # 🛠️ Rozdělení Úkolů
+- Před implementací si budete muset zjistit jména funkcí a endpointů na backendu (psal jsem to tam podle toho, co by náš frontend měl potřebovat) 
 
 ## Silvia
 
