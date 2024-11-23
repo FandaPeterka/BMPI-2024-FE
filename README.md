@@ -1,3 +1,6 @@
+# Aktuální stav 
+### Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily.
+
 # 🛠️ Rozdělení Úkolů
 
 ## Silvia
@@ -31,7 +34,6 @@
 | **getScenesByPlay** - Získání scén podle hry         | 🔴       | 🚧   | 7. 12. |
 | **getRehearsals** - Získání seznamu zkoušek          | 🔴       | 🚧   | 7. 12. |
 | **getLocations** - Získání seznamu lokalit           | 🔴       | 🚧   | 7. 12. |
-| **getNotifications** - Získání seznamu notifikací pro uživatele | 🟡       | 🚧   | 05. 12. |
 | **createRehearsal** - Vytvoření nové zkoušky         | 🔴       | 🚧   | 7. 12. |
 | **updateRehearsal** - Aktualizace zkoušky            | 🔴       | 🚧   | 7. 12. |
 | **deleteRehearsal** - Smazání zkoušky                | 🔴       | 🚧   | 7. 12. |
@@ -43,6 +45,7 @@
 | **setInactiveLocation** - Nastavení lokality jako neaktivní | 🟡       | 🔜   | 14. 12. |
 | **createNotification** - Vytvoření nové notifikace   | 🟢       | 🔜   | 14. 12. |
 | **markNotificationAsSeen** - Označení notifikace jako přečtené | 🟢       | 🔜   | 14. 12. |
+| **getNotifications** - Získání seznamu notifikací pro uživatele | 🟢       | 🔜  | 14. 12. |
 
 
 
