@@ -1,0 +1,79 @@
+/* src/styles/themes.css */
+
+/* Light Mode - Sky Blue */
+:root {
+    --background-color: #e0f7fa;
+    --text-color: #161327;
+    --primary-color: #0288d1; /* Sytější modrá */
+    --secondary-color: #03a9f4; /* Světlejší modrá */
+    --border-color: #81d4fa; /* Světlejší modrá pro ohraničení */
+    --hover-color: #0277bd; /* Tmavší modrá pro hover */
+    --icon-color: #161327; /* Bílé ikony */
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode - Turquoise */
+[data-theme='turquoise'] {
+    --background-color: #e0f2f1;
+    --text-color: #161327;
+    --primary-color: #009688; /* Sytější tyrkysová */
+    --secondary-color: #4db6ac; /* Světlejší tyrkysová */
+    --border-color: #80cbc4; /* Světlejší tyrkysová pro ohraničení */
+    --hover-color: #00796b; /* Tmavší tyrkysová pro hover */
+    --icon-color: #161327;
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode - Navy */
+[data-theme='navy'] {
+    --background-color: #e3f2fd;
+    --text-color: #161327;
+    --primary-color: #1976d2; /* Sytější námořnická modrá */
+    --secondary-color: #42a5f5; /* Světlejší námořnická modrá */
+    --border-color: #90caf9; /* Světlejší modrá pro ohraničení */
+    --hover-color: #1565c0; /* Tmavší námořnická modrá pro hover */
+    --icon-color: #161327;
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode - Cerulean */
+[data-theme='cerulean'] {
+    --background-color: #e1f5fe;
+    --text-color: #161327;
+    --primary-color: #29b6f6; /* Sytější cerulean modrá */
+    --secondary-color: #4fc3f7; /* Světlejší cerulean modrá */
+    --border-color: #81d4fa; /* Světlejší modrá pro ohraničení */
+    --hover-color: #0288d1; /* Tmavší cerulean modrá pro hover */
+    --icon-color: #161327;
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode - Azure */
+[data-theme='azure'] {
+    --background-color: #e8f5e9;
+    --text-color: #161327;
+    --primary-color: #43a047; /* Sytější azurová zelená */
+    --secondary-color: #66bb6a; /* Světlejší azurová zelená */
+    --border-color: #a5d6a7; /* Světlejší zelená pro ohraničení */
+    --hover-color: #388e3c; /* Tmavší azurová zelená pro hover */
+    --icon-color: #161327;
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Mode - Sapphire */
+[data-theme='sapphire'] {
+    --background-color: #ede7f6;
+    --text-color: #161327;
+    --primary-color: #b39ddb; /* Sytější safírová modrá */
+    --secondary-color: #b39ddb; /* Světlejší safírová modrá */
+    --border-color: #5e35b1; /* Světlejší modrá pro ohraničení */
+    --hover-color: #512da8; /* Tmavší safírová modrá pro hover */
+    --icon-color: #161327;
+    --icon-hover-color: #ffffff;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

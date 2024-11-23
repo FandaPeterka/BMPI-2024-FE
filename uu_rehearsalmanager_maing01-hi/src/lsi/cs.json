@@ -29,8 +29,9 @@
     "nameLabel": "Název",
     "initialize": "Inicializovat"
   },
-  "Menu": {
-    "home": "Vítejte",
-    "about": "O aplikaci"
+    "Menu": {
+      "home": "Domů",
+      "dashboard": "Přehled",
+      "createPlay": "Vytvořit hru"
   }
 }

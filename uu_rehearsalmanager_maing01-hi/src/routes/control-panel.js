@@ -1,4 +1,4 @@
-//@@viewOn:imports
+// src/routes/control-panel.js
 import { createVisualComponent, useDataObject, Lsi, LevelProvider, DynamicLibraryComponent } from "uu5g05";
 import Uu5Elements from "uu5g05-elements";
 import Plus4U5App, { withRoute } from "uu_plus4u5g02-app";
@@ -6,19 +6,10 @@ import Calls from "calls";
 
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar.js";
+import ThemeToggle from "./ThemeToggle"; 
 import importLsi from "../lsi/import-lsi.js";
-//@@viewOff:imports
 
-//@@viewOn:constants
-//@@viewOff:constants
-
-//@@viewOn:css
-//@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-let ControlPanel = createVisualComponent({
+const ControlPanelComponent = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "ControlPanel",
   //@@viewOff:statics
@@ -31,6 +22,7 @@ let ControlPanel = createVisualComponent({
   defaultProps: {},
   //@@viewOff:defaultProps
 
+  //@@viewOn:render
   render(props) {
     //@@viewOn:private
     const { state, data, errorData } = useDataObject({ handlerMap: { load: Calls.getWorkspace } });
@@ -40,6 +32,7 @@ let ControlPanel = createVisualComponent({
     let child;
     let territoryBaseUri;
     let artifactId;
+
     if (state === "error" || state === "errorNoData") {
       child = (
         <Plus4U5App.Error error={errorData?.error}>
@@ -58,7 +51,7 @@ let ControlPanel = createVisualComponent({
           <DynamicLibraryComponent
             {...props}
             uu5Tag="UuTerritory.ArtifactIfc.Bricks.PermissionSettings"
-            style={{ margin: 24, width: "auto" }}
+            style={{ margin: 14, width: "auto" }}
             territoryBaseUri={territoryBaseUri}
             artifactId={artifactId}
           />
@@ -71,9 +64,13 @@ let ControlPanel = createVisualComponent({
         </Uu5Elements.HighlightedBox>
       );
     }
+
     return (
       <>
-        <RouteBar />
+        <div className="control-panel-header">
+          <ThemeToggle /> 
+          <RouteBar />
+        </div>
         {child}
       </>
     );
@@ -81,7 +78,7 @@ let ControlPanel = createVisualComponent({
   },
 });
 
-ControlPanel = withRoute(ControlPanel, { authenticated: true });
+const ControlPanel = withRoute(ControlPanelComponent, { authenticated: true });
 
 //@@viewOn:exports
 export { ControlPanel };

@@ -30,7 +30,8 @@
     "initialize": "Initialize"
   },
   "Menu": {
-    "home": "Welcome",
-    "about": "About Application"
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "createPlay": "Create Play"
   }
 }

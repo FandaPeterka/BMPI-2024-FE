@@ -23,7 +23,7 @@ const Css = {
     }),
   formControls: () =>
     Config.Css.css({
-      marginTop: 24,
+      marginTop: 12,
       textAlign: "right",
     }),
 };

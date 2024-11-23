@@ -1,0 +1,59 @@
+.status-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000; /* Ensure it is above other components */
+  }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .status-indicator.pending {
+    background-color: var(--pending-background-color, #f3f3f3); /* Light grey */
+  }
+  
+  .status-indicator.error {
+    background-color: var(--error-background-color, #e74c3c); /* Red */
+    color: #fff;
+  }
+  
+  .status-indicator.success {
+    background-color: var(--success-background-color, #2ecc71); /* Green */
+    color: #fff;
+  }
+  
+  .status-indicator.pending .spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid var(--primary-color); /* Primary color */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  .status-indicator p {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--text-color);
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

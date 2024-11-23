@@ -1,0 +1,61 @@
+/* globalHome.css */
+
+.home-container {
+  padding: 40px;
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section-header {
+  font-size: 32px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-content {
+  font-size: 18px;
+  color: var(--text-color-secondary, #555555);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.feature-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  background-color: var(--feature-background-color, #f9f9f9);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: 40px;
+  color: var(--primary-color); /* Zelená barva zůstává nezměněna */
+  margin-bottom: 10px;
+}
+
+.about-text {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: var(--text-color-secondary, #555555);
+}
+

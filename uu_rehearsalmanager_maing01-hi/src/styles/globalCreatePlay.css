@@ -1,0 +1,364 @@
+/* globalCreatePlay.css */
+
+/* Kontejner hlavního obsahu */
+.create-play-container {
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+/* Hlavička s tlačítky a názvem hry */
+.create-play-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.cp-button {
+  background-color: var(--primary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.cp-button:hover {
+  background-color: var(--hover-color);
+}
+
+.cp-title {
+  font-size: 24px;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+/* Tlačítko Přidat Scénu */
+.scene-add-button {
+  background-color: var(--secondary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.scene-add-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Seznam scén s horizontálním posouváním */
+.scenes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.scene {
+  background-color: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  flex: 0 0 auto;
+  width: 300px; /* Přizpůsobte šířku podle potřeby */
+}
+
+.scene:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Styl pro dokončenou scénu */
+.scene.finished {
+  border-color: #4caf50; /* Zelený okraj - zůstává nezměněn */
+}
+
+/* Skrytí horizontálního posuvníku */
+.scenes-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tlačítka posunu mezi scénami */
+.scenes-scroll-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.scenes-scroll-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.scenes-scroll-button:hover {
+  color: var(--hover-color);
+}
+
+.scenes-scroll-button:disabled {
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Tlačítko Dokončit Hru */
+.cp-finish-button {
+  background-color: var(--secondary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cp-finish-button:hover {
+  background-color: var(--hover-color);
+}
+
+.cp-finish-button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Stylování modálního okna */
+.cp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cp-modal {
+  background-color: #fff;
+  padding: 30px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.cp-modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.cp-modal-close-button:hover {
+  color: #000;
+}
+
+.cp-modal-text {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.cp-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.cp-modal-play-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--icon-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.cp-modal-play-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Formuláře ve scéně */
+.scene-form {
+  margin-bottom: 15px;
+}
+
+.scene-name-input,
+.scene-notes-input,
+.figure-form-input,
+.scene-user-list {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.scene-name-submit-button,
+.scene-notes-submit-button,
+.figure-form-button {
+  background-color: var(--primary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.scene-name-submit-button:hover,
+.scene-notes-submit-button:hover,
+.figure-form-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Seznam postav ve scéně */
+.scene-figures-list h4 {
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.scene-figure {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.figure-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.scene-user-list {
+  margin-left: 10px;
+}
+
+.figure-delete-button {
+  background: none;
+  border: none;
+  color: #e53935; /* Červená barva - zůstává nezměněna */
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+.figure-delete-button:hover {
+  color: #ab000d; /* Tmavší červená při najetí */
+}
+
+/* Tlačítko Dokončit Scénu */
+.scene-finish-button {
+  background-color: var(--secondary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.scene-finish-button:hover {
+  background-color: var(--hover-color);
+}
+
+.scene-finish-button:disabled {
+  background-color: #c8e6c9;
+  cursor: not-allowed;
+}
+
+/* Tlačítko Upravit Scénu */
+.scene-edit-button {
+  background-color: var(--primary-color);
+  color: var(--icon-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.scene-edit-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Shrnutí dokončené scény */
+.scene-summary {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.scene-summary p {
+  margin: 5px 0;
+}
+
+.scene-summary ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
+/* Tlačítko pro vymazání scény */
+.scene-delete-button {
+  background: none;
+  border: none;
+  color: #e53935; /* Červená barva - zůstává nezměněna */
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.scene-delete-button:hover {
+  color: #ab000d; /* Tmavší červená při najetí */
+  cursor: pointer; /* Změna kurzoru na ručičku */
+}
+

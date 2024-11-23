@@ -1,3 +1,4 @@
+// JavaScript
 //@@viewOn:imports
 import { createVisualComponent, Lsi, useRoute } from "uu5g05";
 import Plus4U5App from "uu_plus4u5g02-app";
@@ -40,9 +41,17 @@ const RouteBar = createVisualComponent({
         onClick: () => setRoute("home"),
       },
       {
-        children: <Lsi import={importLsi} path={["Menu", "about"]} />,
+        children: "About", // Dočasné nahrazení Lsi komponenty statickým textem
         onClick: () => setRoute("about"),
         collapsed: true,
+      },
+      {
+        children: <Lsi import={importLsi} path={["Menu", "dashboard"]} />,
+        onClick: () => setRoute("dashboard"),
+      },
+      {
+        children: <Lsi import={importLsi} path={["Menu", "createPlay"]} />,
+        onClick: () => setRoute("create-play"),
       },
     ];
     //@@viewOff:private
