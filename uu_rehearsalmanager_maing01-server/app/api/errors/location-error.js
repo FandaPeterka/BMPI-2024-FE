@@ -1,17 +1,17 @@
 /* eslint-disable */
 "use strict";
-const RehearsalmanagerMainUseCaseError = require("./rehearsalmanager-main-use-case-error.js");
+const RehearsalmanagerLocationUseCaseError = require("./rehearsalmanager-location-use-case-error.js");
 
 const List = {
-    UC_CODE: `${RehearsalmanagerMainUseCaseError.ERROR_PREFIX}/location/list`,
-    invalidDtoIn: class extends RehearsalmanagerMainUseCaseError {
+    UC_CODE: `${RehearsalmanagerLocationUseCaseError.ERROR_PREFIX}list`,
+    invalidDtoIn: class extends RehearsalmanagerLocationUseCaseError {
         constructor() {
             super(...arguments);
             this.code = `${List.UC_CODE}/invalidDtoIn`;
             this.message = "DtoIn is not valid.";
         }
     },
-    LocationDaoListFailed: class extends RehearsalmanagerMainUseCaseError {
+    LocationDaoListFailed: class extends RehearsalmanagerLocationUseCaseError {
         constructor() {
             super(...arguments);
             this.code = `${List.UC_CODE}/locationDaoListFailed`;
@@ -21,16 +21,16 @@ const List = {
 }
 
 const Create = {
-    UC_CODE: `${RehearsalmanagerMainUseCaseError.ERROR_PREFIX}/location/create`,
-    
-    invalidDtoIn: class extends RehearsalmanagerMainUseCaseError {
+    UC_CODE: `${RehearsalmanagerLocationUseCaseError.ERROR_PREFIX}create`,
+
+    invalidDtoIn: class extends RehearsalmanagerLocationUseCaseError {
         constructor() {
             super(...arguments);
             this.code = `${Create.UC_CODE}/invalidDtoIn`;
             this.message = "DtoIn is not valid.";
         }
     },
-    LocationDaoCreateFailed: class extends RehearsalmanagerMainUseCaseError {
+    LocationDaoCreateFailed: class extends RehearsalmanagerLocationUseCaseError {
         constructor() {
             super(...arguments);
             this.code = `${Create.UC_CODE}/locationDaoCreateFailed`;

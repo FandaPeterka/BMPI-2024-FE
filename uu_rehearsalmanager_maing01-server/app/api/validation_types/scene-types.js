@@ -19,6 +19,10 @@ const sceneUpdateDtoInType = shape({
   publicDescription: string(1, 4000),
   characterList: array(shape({
     name: string(1, 255),
-    actorList: array(string(30), 0, 10)
+    actorList: array(uuIdentity(), 0, 10)
   }), 0, 50)
+});
+
+const sceneDeleteDtoInType = shape({
+  id: id().isRequired()
 });
