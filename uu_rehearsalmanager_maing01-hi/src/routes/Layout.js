@@ -1,6 +1,6 @@
 import React from 'react';
 import ThemeToggle from './ThemeToggle';
-import RouteBar from '../core/route-bar.js'; // Ujistěte se, že cesta je správná
+import RouteBar from '../core/route-bar.js'; 
 
 const Layout = ({ children }) => (
   <>
@@ -14,4 +14,5 @@ const Layout = ({ children }) => (
   </>
 );
 
+export { Layout };
 export default Layout;

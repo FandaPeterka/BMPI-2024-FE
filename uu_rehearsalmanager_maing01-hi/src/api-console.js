@@ -1,4 +1,4 @@
-import { Environment, Utils, DynamicLibraryComponent } from "uu5g05";
+import { Environment, Utils, DynamicLibraryComponent, createVisualComponent } from "uu5g05";
 import Plus4U5 from "uu_plus4u5g02";
 import Plus4U5App from "uu_plus4u5g02-app";
 import Plus4U5Elements from "uu_plus4u5g02-elements";

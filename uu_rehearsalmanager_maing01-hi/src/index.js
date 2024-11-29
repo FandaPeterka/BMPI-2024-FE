@@ -1,4 +1,4 @@
-import { Environment, Utils } from "uu5g05";
+import { Environment, Utils, createVisualComponent } from "uu5g05";
 // NOTE Following import is required to make uu5g04-based components work and integrate correctly with uu5g05.
 // It is primarily intended for applications using uuEcc, uu5RichText, components that are dynamically loaded
 // via uuAppLibraryRegistry or customizable uu5Strings (as all of those may contain uu5g04-based components).

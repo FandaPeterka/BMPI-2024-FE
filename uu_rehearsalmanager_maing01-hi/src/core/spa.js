@@ -1,7 +1,7 @@
 // src/core/spa.js
 
 import { createVisualComponent, Utils } from "uu5g05";
-import React from 'react';
+import React, { Suspense } from 'react';
 import Uu5Elements from "uu5g05-elements";
 import Plus4U5 from "uu_plus4u5g02";
 import Plus4U5App from "uu_plus4u5g02-app";
@@ -25,7 +25,7 @@ const withLayout = (Component) => (props) => (
 );
 
 const ROUTE_MAP = {
-  "": { redirect: "home" },
+  "": (props) => <Home {...props} />,
   home: (props) => <Home {...props} />,
   about: (props) => <About {...props} />,
   dashboard: (props) => <Dashboard {...props} />,
