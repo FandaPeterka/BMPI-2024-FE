@@ -1,53 +1,84 @@
+# Aktuální stav 
+### Dokumentace je prakticky hotová. Frontend s Mocky a simulovaným voláním backendu je hotov. Zbývají drobné detaily pro úplné doknočení dokumentace i frontendu s mocky. Tým najíždí na propojování frontendu s backendem. 
+
 # 🛠️ Rozdělení Úkolů
+- Před implementací si budete muset zjistit jména funkcí a endpointů na backendu (psal jsem to tam podle toho, co by náš frontend měl potřebovat) 
 
 ## Silvia
 
-| Úkol                       | Priorita | Stav | Termín   |
-|----------------------------|----------|------|----------|
-| Získat ukázkové kódy od učitele | 🟡       | 🚧   | 10. 11. |
-| Implementovat základní strukturu dashboardu  | 🔴       | 🚧   | 20. 11. |
+### Propojit routu create-play s backendem
 
-### Poznámky 
+| Úkol                                        | Priorita | Stav | Termín   |
+|---------------------------------------------|----------|------|----------|
+| **getPlays** - Získání seznamu her           | 🔴       | 🚧   | 7. 12. |
+| **getActors** - Získání seznamu herců         | 🔴       | 🚧   | 7. 12. |
+| **getScenesByPlay** - Získání scén podle hry  | 🔴       | 🚧   | 7. 12. |
+| **createScene** - Vytvoření nové scény        | 🔴       | 🚧   | 7. 12. |
+| **updateScene** - Aktualizace scény           | 🟡       | 🚧   | 7. 12. |
+| **deleteScene** - Smazání scény               | 🟡       | 🚧  | 7. 12. |
+| **assignActorToFigure** - Přiřazení herce k postavě ve scéně | 🔴       | 🔜   | 14. 12. |
+| **finishSceneConfiguration** - Dokončení konfigurace scény | 🟡       | 🔜   | 14. 12. |
+| **finishPlayConfiguration** - Dokončení konfigurace hry | 🟡       | 🔜   | 14. 12. |
 
-#### Komponenty k impelementaci: 
-- UsersList
-- RehearsalList
-- Rehearsal 
+
+
 ---
 
 ## Jindra
 
-| Úkol                 | Priorita | Stav | Termín   |
-|----------------------|----------|------|----------|
-| Získat kód uuJokes   | 🟡       | 🚧   | 10. 11. |
-| Implementovat Tlačítko hry v routě Dashboard + Seznam her v modálním okně    | 🔴       | 🚧   | 20. 11. |
-| Implementovat Menu pro tlačítka pro přechod mezi routami (Navigační menu)    | 🟡       | 🚧   | 20. 11. |
+### Propojit routu dashboard s backendem
 
-### Poznámky 
+| Úkol                                          | Priorita | Stav | Termín   |
+|-----------------------------------------------|----------|------|----------|
+| **getActors** - Získání seznamu herců               | 🔴       | 🚧   | 7. 12. |
+| **getPlays** - Získání seznamu her                  | 🔴       | 🚧   | 7. 12. |
+| **getScenesByPlay** - Získání scén podle hry         | 🔴       | 🚧   | 7. 12. |
+| **getRehearsals** - Získání seznamu zkoušek          | 🔴       | 🚧   | 7. 12. |
+| **getLocations** - Získání seznamu lokalit           | 🔴       | 🚧   | 7. 12. |
+| **createRehearsal** - Vytvoření nové zkoušky         | 🔴       | 🚧   | 7. 12. |
+| **updateRehearsal** - Aktualizace zkoušky            | 🔴       | 🚧   | 7. 12. |
+| **deleteRehearsal** - Smazání zkoušky                | 🔴       | 🚧   | 7. 12. |
+| **updatePresenceStatus** - Aktualizace stavu přítomnosti herce na zkoušce | 🔴       | 🚧   | 10. 12. |
+| **createLocation** - Vytvoření nové lokality          | 🔴       | 🔜   | 14. 12. |
+| **updateLocation** - Aktualizace lokality             | 🟡       | 🔜   | 14. 12. |
+| **deleteLocation** - Smazání lokality                 | 🟡       | 🔜   | 14. 12. |
+| **setActiveLocation** - Nastavení lokality jako aktivní | 🟡       | 🔜   | 14. 12. |
+| **setInactiveLocation** - Nastavení lokality jako neaktivní | 🟡       | 🔜   | 14. 12. |
+| **createNotification** - Vytvoření nové notifikace   | 🟢       | 🔜   | 14. 12. |
+| **markNotificationAsSeen** - Označení notifikace jako přečtené | 🟢       | 🔜   | 14. 12. |
+| **getNotifications** - Získání seznamu notifikací pro uživatele | 🟢       | 🔜  | 14. 12. |
 
-#### Komponenty k impelementaci: 
-- NavBar (DashboardRouteButton + CreatePlayRouteButton)
-- RehearsalPlayButton 
-- PlayList 
-- PlayButton 
+
 
 ---
 
 ## Patrik
 
-| Úkol                              | Priorita | Stav | Termín   |
-|-----------------------------------|----------|------|----------|
-| Hledat uuApp komponenty v dokumentaci | 🟡       | 🚧   | 11. 11. |
+### Dodělat dokumentaci frontendu
+
+| Úkol                                               | Priorita | Stav | Termín   |
+|----------------------------------------------------|----------|------|----------|
+| - Dokumentace jednotlivých komponent - dashboard     | 🔴       | 🚧   | 27. 11. |
+| - Dokumentace jednotlivých komponent - create-play   | 🔴       | 🚧   | 27. 11. |
+| - Pomoci Jindrovi a Sisi s propojováním frontendu s backendem   | 🔴       | 🚧   | 14. 12. |
+
+
 
 ---
 
 ## Fanda
 
-| Úkol                              | Priorita | Stav | Termín   |
-|-----------------------------------|----------|------|----------|
-| Dokončit analýzu jednotlivých komponent | 🔴       | 🚧   | 10. 11. |
-| Připravit mock data               | 🔴       | 🔜   | 11. 11. |
+| Úkol                                                    | Priorita | Stav | Termín   |
+|---------------------------------------------------------|----------|------|----------|
+| Poklikat všechno ve SprintManovi                         | 🔴       | 🚧   | 25. 11. |
+| Doupravit detaily frontendu s mocky                      | 🔴       | 🚧   | 26. 11. |
+| Naplánovat další kroky                                    | 🟡       | 🚧   | 27. 11. |
+| Dát nový frontend do našeho školního repa                                    | 🟡       | 🚧   | 27. 11. |
+| Naplánovat poslední sprint                                | 🟡       | 🔜   | 2. 12. |
+| Meeting pro ukázku frontendu s mocky vývojářům           | 🟡       | 🔜   | ?. 12. |
+| Pomáhat, kde je potřeba         | 🟡       | 🚧   | ?. 12. |
 
+---
 
 ## 📝 Význam ikon 
 
@@ -63,26 +94,9 @@
 
 ---
 
-### Stažení aplikace 
-1. Stáhněte si větev develop z repa
-```bash
-git clone -b develop <url projektu> 
-```
-2. Inicializujte backend a frontend
-```bash
-npm install  <složka backendu / složka frontendu> 
-```
-3. Začněte pracovat
-- Naše práce bude probíhat ve složce => uu_rehearsalmanager_maing01-hi
-```bash
-cd uu_rehearsalmanager_maing01-hi
-npm start 
-```
----
-
 ### Produkční účet 
 - Budete potřebovat založit produkční účet
-- Jedině produkční účet je udrží stabilní přihlášení na frontendu
+- Jedině produkční účet udrží stabilní přihlášení na frontendu
 - [Produkční účet](https://uuapp-dev.plus4u.net/uu-identitymanagement-maing01/58ceb15c275c4b31bfe0fc9768aa6a9c/registration?acrValues=standard%20high%20veryHigh&clientId=uu-oidc%3Aunregistered-client%3Alocalhost&uiLocales=en-gb&state=h4EiR6340-KAR_1G.FrPXaOW_kAHZ1df5yGXgC7QRq5RDWldcmPhkQbwBjcylZEd0nDYbnjAfIshycR-FCf1kVF674yzX_yLvdFVrKqEc9pedn7b5ofZ9eUhQKsbOtZDjT4aySb1ATZhYLY0Svne31vvzF4INykT7jmH_xtj2knk5QKtZnP4CK8_qfru0hw2N1y08HzL4GcQScfBtjot7DBN7RCkCg5wfrpE5Dy6orGsHNCF293Z4iOshFL6DF83naCWY9NA0xEmLIkPmX5KU9BhQF6xVDFt7sKQhw6W-qlFqMNsCMnPA1xgW1OUs4w6HJsQTLRtrvhBzmVh-cr4ouKgm2QHHIEUxvu1rTdxW-bzcoQC4QbTleJirEVn3eqXsSutpXrH1A_0BUeIYycuuu9wfNOYX5SaMymjJXLcN9D8Gec7Dx5HLnNKWNyj15iQxMwU1CuNE6Ww1k9ixuxJef8x8HtEz09r8i9qk4Lmnd-FQ7rMDP9KrahZ8rtXj2i32_wIB_LNeaeoyVtE%3D)
 
 ---
@@ -94,10 +108,7 @@ npm start
 
 ---
 
-### Aplikační model 
+### Aplikační model (Dokumentace)
 - [Routy](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=6706864a590f3b66b6cb708e)
 - [Dashboard komponenty](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=6706864a590f3b66b6cb709b)
 - [CreatePlay komponenty](https://uuapp.plus4u.net/uu-managementkit-maing02/38744216cb324edca986789798259ba9/document?oid=67068641590f3b66b6cb700b&pageOid=67264fe35d90e7bb6ce1b1c8)
-
-
-
