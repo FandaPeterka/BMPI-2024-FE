@@ -15,6 +15,9 @@ const WARNINGS = {
   },
   updateUnsupportedKeys: {
     code: `${Errors.Update.UC_CODE}/unsupportedKeys`
+  },
+  memberListUnsupportedKeys: {
+    code: `${Errors.MemberList.UC_CODE}/unsupportedKeys`
   }
 };
 
@@ -35,13 +38,19 @@ class RehearsalAbl {
     dtoIn  = {...dtoIn, ...{
       awid: ucEnv.getUri().getAwid(),
       date: dtoIn.date ? dtoIn.date : "",
-      sceneList: dtoIn.sceneList ? dtoIn.sceneList : [],
-      valid: "true",
+      sceneList: [],
+      valid: false,
       presenceList: []
     }};
 
     let dtoOut;
     try {
+      let scenes = await this.sceneDao.list(dtoIn.awid, dtoIn.actId);
+      let sceneList = [];
+      for (const scene of scenes.itemList) {
+        sceneList.push(scene.id);
+      }
+      dtoIn.sceneList = sceneList;
       logger.debug("Going to create rehearsal");
       dtoOut = await this.dao.create(dtoIn);
     } catch (e) {
@@ -66,13 +75,13 @@ class RehearsalAbl {
       const uuIdentity = ucEnv.getSession().getIdentity().getUuIdentity();
       const awid = ucEnv.getUri().getAwid();
 
-      let scenesWhereUserActorOrDirector = await this.sceneDao.listByUser(awid, uuIdentity, dtoIn.pageInfo)
+      let scenesWhereUserActorOrDirector = await this.sceneDao.listByUser(awid, uuIdentity)
       const sceneIds = scenesWhereUserActorOrDirector.itemList.map(item => item.id.toString());
 
       logger.debug("Going to get rehearsal list");
       // TODO invalid rehearsals can be listed by ORGANISER
       let isValid = true;
-      dtoOut = await this.dao.list(awid, sceneIds, isValid, dtoIn.pageInfo);
+      dtoOut = await this.dao.list(awid, sceneIds, isValid, null, null, dtoIn.pageInfo);
     } catch (e) {
       if (e instanceof ObjectStoreError) {
         throw new Errors.List.RehearsalDaoListFailed({uuAppErrorMap}, e)
@@ -106,6 +115,36 @@ class RehearsalAbl {
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut;
   }
+
+  async memberList(ucEnv) {
+    logger.debug("Validating RehearsalMemberList input");
+    let dtoIn = ucEnv.getDtoIn();
+    let validationResult = this.validator.validate("rehearsalMemberListDtoInType", dtoIn);
+    let uuAppErrorMap = ValidationHelper.processValidationResult(dtoIn, validationResult, WARNINGS.memberListUnsupportedKeys.code, Errors.MemberList.invalidDtoIn);
+
+    dtoIn  = {...dtoIn, ...{
+        awid: ucEnv.getUri().getAwid()
+    }};
+
+    let dtoOut = {};
+    try {
+      logger.debug("Going to get MemberList of rehearsal");
+      const rehearsal = await this.dao.get(dtoIn);
+      const sceneList = await this.sceneDao.list(dtoIn.awid, rehearsal.sceneList);
+      dtoOut.itemList = [...new Set(sceneList.itemList.flatMap(item => [
+        item.directorId,
+        ...item.characterList.flatMap(character => character.actorList)
+      ]))];
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+        throw new Errors.MemberList.RehearsalDaoGetFailed({uuAppErrorMap}, e)
+      }
+      throw e;
+    }
+    dtoOut.uuAppErrorMap = uuAppErrorMap;
+    return dtoOut;
+  }
+
 }
 
 module.exports = new RehearsalAbl();

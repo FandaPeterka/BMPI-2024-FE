@@ -46,6 +46,11 @@
         "httpMethod": "POST",
         "type": "CMD"
       },
+      "scene/delete": {
+        "realization": "api/controllers/SceneController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
       "location/list": {
         "realization": "api/controllers/LocationController.list",
         "httpMethod": "GET",
@@ -69,6 +74,16 @@
       "rehearsal/update": {
         "realization": "api/controllers/RehearsalController.update",
         "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "rehearsal/member/list": {
+        "realization": "api/controllers/RehearsalController.memberList",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "actor/list": {
+        "realization": "api/controllers/ActorController.list",
+        "httpMethod": "GET",
         "type": "CMD"
       }
     }

@@ -14,6 +14,11 @@ class RehearsalController {
   update(ucEnv) {
     return RehearsalAbl.update(ucEnv);
   }
+
+  memberList(ucEnv) {
+    return RehearsalAbl.memberList(ucEnv);
+  }
+
 }
 
 module.exports = new RehearsalController();
