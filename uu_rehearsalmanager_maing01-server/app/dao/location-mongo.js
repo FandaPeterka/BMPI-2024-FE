@@ -4,7 +4,7 @@ const { UuObjectDao } = require("uu_appg01_server").ObjectStore;
 
 class LocationMongo extends UuObjectDao {
     async createSchema() {
-        await super.createIndex( { awid: 1, actId: 1});
+        await super.createIndex( { awid: 1, active: 1 });
     }
 
     async list(awid, active, pageInfo) {
@@ -17,6 +17,16 @@ class LocationMongo extends UuObjectDao {
 
     async create(location){
         return super.insertOne(location);
+    }
+
+    async update(location){
+        const { id, awid, ...locationData } = location;
+        let filter = {
+            awid: awid,
+            id: id
+        };
+
+        return await super.findOneAndUpdate(filter, locationData, "NONE");
     }
 }
 

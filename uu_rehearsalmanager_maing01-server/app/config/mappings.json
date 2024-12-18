@@ -61,6 +61,11 @@
         "httpMethod": "POST",
         "type": "CMD"
       },
+      "location/update": {
+        "realization": "api/controllers/LocationController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
       "rehearsal/create": {
         "realization": "api/controllers/RehearsalController.create",
         "httpMethod": "POST",
@@ -84,6 +89,21 @@
       "actor/list": {
         "realization": "api/controllers/ActorController.list",
         "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "notification/list": {
+        "realization": "api/controllers/NotificationController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "notification/create": {
+        "realization": "api/controllers/NotificationController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "notification/update": {
+        "realization": "api/controllers/NotificationController.update",
+        "httpMethod": "POST",
         "type": "CMD"
       }
     }

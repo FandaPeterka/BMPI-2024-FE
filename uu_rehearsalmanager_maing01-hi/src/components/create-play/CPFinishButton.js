@@ -1,4 +1,5 @@
-// CPFinishButton.js
+// src/components/create-play/CPFinishButton.js
+
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { Lsi, useLsi } from "uu5g05";

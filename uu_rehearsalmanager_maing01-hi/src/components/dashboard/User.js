@@ -1,12 +1,13 @@
-import React from "react";
-import { Lsi } from "uu5g05";
-import lsiDashboard from "../../lsi/lsi-dashboard";
+// src/components/dashboard/User.js
 
-const User = ({ userName, userId }) => {
+import React from "react";
+import { PersonItem } from "uu_plus4u5g02-elements";
+
+const User = ({ user }) => {
+  // user je uuIdentity string
   return (
     <div className="user">
-      <p className="user-name" title={<Lsi lsi={lsiDashboard.userTooltip} />}>{userName}</p>
-      <p className="user-id"><Lsi lsi={lsiDashboard.userIdLabel} /> {userId}</p>
+      <PersonItem uuIdentity={user} />
     </div>
   );
 };

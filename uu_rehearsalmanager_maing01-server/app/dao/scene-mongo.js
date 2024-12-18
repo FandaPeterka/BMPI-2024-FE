@@ -15,7 +15,7 @@ class SceneMongo extends UuObjectDao {
     return super.find({awid: awid, actId: actId}, pageInfo, {"sys.cts": 1});
   }
 
-  async list(awid, sceneIds) {
+  async listById(awid, sceneIds) {
     const filter = {
       awid: awid,
       ...sceneIds.length > 0 && {_id: {$in: sceneIds.map((id) => new ObjectId(id))}}

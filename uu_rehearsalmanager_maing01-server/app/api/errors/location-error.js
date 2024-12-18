@@ -39,7 +39,33 @@ const Create = {
     }
 }
 
+const Update = {
+    UC_CODE: `${RehearsalmanagerLocationUseCaseError.ERROR_PREFIX}update`,
+    invalidDtoIn: class extends RehearsalmanagerLocationUseCaseError {
+        constructor() {
+            super(...arguments);
+            this.code = `${Update.UC_CODE}/invalidDtoIn`;
+            this.message = "DtoIn is not valid.";
+        }
+    },
+    LocationDaoUpdateFailed: class extends RehearsalmanagerLocationUseCaseError {
+        constructor() {
+            super(...arguments);
+            this.code = `${Update.UC_CODE}/locationDaoUpdateFailed`;
+            this.message = "Updating location failed.";
+        }
+    },
+    LocationNoActive: class extends RehearsalmanagerLocationUseCaseError {
+        constructor() {
+            super(...arguments);
+            this.code = `${Update.UC_CODE}/locationNoActive`;
+            this.message = "This is the last active location, you can not deactivate it.";
+        }
+    }
+}
+
 module.exports = {
   List,
-  Create
+  Create,
+  Update
 }

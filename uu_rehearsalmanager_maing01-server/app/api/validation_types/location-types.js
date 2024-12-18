@@ -13,3 +13,10 @@ const locationCreateDtoInType = shape({
     address: string(1, 2000).isRequired(),
     active: boolean().isRequired()
 });
+
+const locationUpdateDtoInType = shape({
+    id: id().isRequired(),
+    name: string(1, 255),
+    address: string(1, 2000),
+    active: boolean()
+});

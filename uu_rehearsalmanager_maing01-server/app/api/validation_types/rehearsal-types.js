@@ -20,6 +20,7 @@ const rehearsalUpdateDtoInType = shape({
   valid: boolean(),
   sceneList: array(string(1, 128)),
   presenceList: array(uuIdentity(), 0, 10),
+  locationId: string(1, 128) // Přidáno
 });
 
 const rehearsalMemberListDtoInType = shape({

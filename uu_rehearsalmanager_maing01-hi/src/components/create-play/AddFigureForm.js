@@ -1,4 +1,5 @@
-// AddFigureForm.js
+// src/components/create-play/AddFigureForm.js
+
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Lsi, useLsi } from "uu5g05";

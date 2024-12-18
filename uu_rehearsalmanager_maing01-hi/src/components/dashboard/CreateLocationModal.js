@@ -1,4 +1,5 @@
-// CreateLocationModal.js
+// src/components/dashboard/CreateLocationModal.js
+
 import React from "react";
 import CreateLocationForm from "./CreateLocationForm";
 import { Lsi } from "uu5g05";

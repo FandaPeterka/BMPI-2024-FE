@@ -1,11 +1,12 @@
-// CreateLocationForm.js
+// src/components/dashboard/CreateLocationForm.js
+
 import React, { useState, useEffect } from "react";
 import { useDataContext } from "../../context/DashboardContext";
 import { Lsi } from "uu5g05";
 import lsiDashboard from "../../lsi/lsi-dashboard";
 
 const CreateLocationForm = ({ onClose }) => {
-  const { locations, addLocation, updateLocation, deleteLocation, setActiveLocation, setInactiveLocation } = useDataContext();
+  const { locations, addLocation, updateLocation, setActiveLocation, setInactiveLocation, reloadLocations } = useDataContext();
   const [locationId, setLocationId] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -29,48 +30,80 @@ const CreateLocationForm = ({ onClose }) => {
     }
   }, [locationId, locations]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const newLocation = {
-      id: isEditing ? locationId : Date.now().toString(),
       name,
       address,
       active: isActive,
-      awid: "583ebf71c50ed33d7c03dda9",
-      sys: {
-        cts: new Date().toISOString(),
-        mts: new Date().toISOString(),
-        rev: 1,
-      },
+      // awid bude automaticky nastaveno na backendu, není potřeba jej nastavovat zde
     };
     if (isEditing) {
-      updateLocation(newLocation);
+      try {
+        await updateLocation({ id: locationId, name, address, active: isActive });
+        await reloadLocations(); // Načte nejnovější data
+        onClose();
+      } catch (error) {
+        console.error("Error updating location:", error);
+        // Zde můžete přidat notifikaci pro uživatele
+      }
     } else {
-      addLocation(newLocation);
+      try {
+        await addLocation(newLocation);
+        await reloadLocations(); // Načte nejnovější data
+        onClose();
+      } catch (error) {
+        console.error("Error adding location:", error);
+        // Zde můžete přidat notifikaci pro uživatele
+      }
     }
-    onClose();
   };
 
-  const handleDelete = () => {
-    deleteLocation(locationId);
-    onClose();
+  /*
+  // Odstraněno: Funkce handleDelete a tlačítko pro mazání
+  const handleDelete = async () => {
+    if (window.confirm("Opravdu chcete smazat tuto lokaci?")) {
+      try {
+        await deleteLocation(locationId);
+        onClose();
+      } catch (error) {
+        console.error("Error deleting location:", error);
+        // Zde můžete přidat notifikaci pro uživatele
+      }
+    }
+  };
+  */
+
+  const handleSetActive = async () => {
+    try {
+      await setActiveLocation(locationId);
+      await reloadLocations(); // Načte nejnovější data
+    } catch (error) {
+      console.error("Error setting location as active:", error);
+      // Zde můžete přidat notifikaci pro uživatele
+    }
   };
 
-  const handleSetActive = () => {
-    setActiveLocation(locationId);
-    setIsActive(true);
-  };
-
-  const handleSetInactive = () => {
-    setInactiveLocation(locationId);
-    setIsActive(false);
+  const handleSetInactive = async () => {
+    try {
+      await setInactiveLocation(locationId);
+      await reloadLocations(); // Načte nejnovější data
+    } catch (error) {
+      console.error("Error setting location as inactive:", error);
+      // Zde můžete přidat notifikaci pro uživatele
+    }
   };
 
   const handleSelectLocation = (e) => {
     setLocationId(e.target.value);
   };
 
+  const handleSelectBoxFocus = () => {
+    reloadLocations(); // Načte nejnovější lokace
+  };
+
   return (
-    <>
+    <form onSubmit={handleSubmit} className="modal-form">
       <div className="modal-form-group">
         <label>
           <Lsi lsi={lsiDashboard.selectLocation} />
@@ -78,13 +111,18 @@ const CreateLocationForm = ({ onClose }) => {
         <select
           value={locationId}
           onChange={handleSelectLocation}
+          onFocus={handleSelectBoxFocus} // Přidáno
           className="modal-select"
         >
           <option value="">
-            {<Lsi lsi={lsiDashboard.newLocation} />}
+            <Lsi lsi={lsiDashboard.newLocation} />
           </option>
           {locations.map((loc) => (
-            <option key={loc.id} value={loc.id} className={loc.active ? "active-location" : "inactive-location"}>
+            <option
+              key={loc.id}
+              value={loc.id}
+              className={loc.active ? "active-location" : "inactive-location"}
+            >
               {loc.name} - {loc.address}
             </option>
           ))}
@@ -99,6 +137,7 @@ const CreateLocationForm = ({ onClose }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="modal-input"
+          required
         />
       </div>
       <div className="modal-form-group">
@@ -110,6 +149,7 @@ const CreateLocationForm = ({ onClose }) => {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           className="modal-input"
+          required
         />
       </div>
       <div className="modal-form-group">
@@ -117,31 +157,52 @@ const CreateLocationForm = ({ onClose }) => {
           <Lsi lsi={lsiDashboard.locationStatus} />
         </label>
         <p className={isActive ? "active-status" : "inactive-status"}>
-          {isActive ? <Lsi lsi={lsiDashboard.active} /> : <Lsi lsi={lsiDashboard.inactive} />}
+          {isActive ? (
+            <Lsi lsi={lsiDashboard.active} />
+          ) : (
+            <Lsi lsi={lsiDashboard.inactive} />
+          )}
         </p>
       </div>
       <div className="modal-buttons">
-        <button onClick={handleSubmit} className="modal-submit-button">
+        <button type="submit" className="modal-submit-button">
           <Lsi lsi={lsiDashboard.save} />
         </button>
         {isEditing && (
           <>
-            <button onClick={handleDelete} className="modal-delete-button">
+            {/* Odstraněno: Tlačítko pro mazání */}
+            {/* <button
+              type="button"
+              onClick={handleDelete}
+              className="modal-delete-button"
+            >
               <Lsi lsi={lsiDashboard.delete} />
-            </button>
-            <button onClick={handleSetActive} className="modal-active-button">
+            </button> */}
+            <button
+              type="button"
+              onClick={handleSetActive}
+              className="modal-active-button"
+            >
               <Lsi lsi={lsiDashboard.setActive} />
             </button>
-            <button onClick={handleSetInactive} className="modal-inactive-button">
+            <button
+              type="button"
+              onClick={handleSetInactive}
+              className="modal-inactive-button"
+            >
               <Lsi lsi={lsiDashboard.setInactive} />
             </button>
           </>
         )}
-        <button onClick={onClose} className="modal-cancel-button">
+        <button
+          type="button"
+          onClick={onClose}
+          className="modal-cancel-button"
+        >
           <Lsi lsi={lsiDashboard.cancel} />
         </button>
       </div>
-    </>
+    </form>
   );
 };
 

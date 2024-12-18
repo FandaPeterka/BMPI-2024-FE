@@ -1,4 +1,5 @@
-// CreatePlayContent.js
+// src/components/CreatePlay/CreatePlayContent.js
+
 import React from "react";
 import { FaPlus, FaList } from "react-icons/fa";
 import { useCreatePlayContext } from "../../context/CreatePlayContext";
@@ -8,7 +9,6 @@ import CPScenesList from "./CPScenesList";
 import CPTitle from "./CPTitle";
 import { Lsi } from "uu5g05";
 import lsiCreatePlay from "../../lsi/lsi-createplay";
-// Removed StatusIndicator import
 
 const CreatePlayContent = () => {
   const {
@@ -20,6 +20,7 @@ const CreatePlayContent = () => {
     handleAddScene,
     handleUpdateScene,
     handleDeleteScene,
+    userRoles, // Přidáno
   } = useCreatePlayContext();
 
   const [isCPModalOpen, setIsCPModalOpen] = React.useState(false);
@@ -32,12 +33,23 @@ const CreatePlayContent = () => {
     setIsCPModalOpen(false);
   };
 
-  // Check if all scenes are finished
   const allScenesFinished = scenes.length > 0 && scenes.every((scene) => scene.isFinished);
+
+  // Kontrola, zda uživatel má roli "Directors"
+  const hasDirectorRole = userRoles.includes("Directors");
+
+  if (!hasDirectorRole) {
+    return (
+      <div className="access-denied-message">
+        <p>
+          Pro přístup do této sekce a vytváření her potřebuješ oprávnění <strong>Directors</strong> - Můžeš o ně požádat prostřednictvím zákaznické podpory.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="create-play-container">
-      {/* Removed StatusIndicator component */}
       <div className="create-play-header">
         <button
           className="cp-button"
@@ -73,7 +85,6 @@ const CreatePlayContent = () => {
         <>
           <CPScenesList
             scenes={scenes}
-            onAddScene={handleAddScene}
             onUpdateScene={handleUpdateScene}
             onDeleteScene={handleDeleteScene}
           />

@@ -1,4 +1,5 @@
-// SceneDeleteButton.js
+// src/components/create-play/SceneDeleteButton.js
+
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 import { Lsi, useLsi } from "uu5g05";

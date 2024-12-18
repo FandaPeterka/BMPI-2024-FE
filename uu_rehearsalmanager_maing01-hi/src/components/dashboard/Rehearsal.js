@@ -1,3 +1,5 @@
+// src/components/dashboard/Rehearsal.js
+
 import React from "react";
 import RehearsalTerm from "./RehearsalTerm";
 import RehearsalLocation from "./RehearsalLocation";

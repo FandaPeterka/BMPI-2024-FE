@@ -18,6 +18,10 @@
         "rehearsal": {
           "realization": "dao/RehearsalMongo",
           "MaxNoi": 1000
+        },
+        "notification": {
+          "realization": "dao/NotificationMongo",
+          "maxNoi": 1000
         }
       }
     }

@@ -1,4 +1,3 @@
-// Scene.js
 import React, { useState, useEffect } from "react";
 import { useCreatePlayContext } from "../../context/CreatePlayContext";
 import SceneDeleteButton from "./SceneDeleteButton";
@@ -7,21 +6,24 @@ import SceneNotesForm from "./SceneNotesForm";
 import SceneFiguresList from "./SceneFiguresList";
 import SceneFinishButton from "./SceneFinishButton";
 import SceneEditButton from "./SceneEditButton";
-import { Lsi } from "uu5g05";
+import { Lsi, useLsi } from "uu5g05";
 import lsiCreatePlay from "../../lsi/lsi-createplay";
+import { PersonItem } from "uu_plus4u5g02-elements";
 
 const Scene = ({ scene, onUpdateScene, onDeleteScene }) => {
   const [isValid, setIsValid] = useState(false);
-  const { actors } = useCreatePlayContext();
+  const { actors, handleAssignActorsToFigure } = useCreatePlayContext();
+  const editSceneText = useLsi(lsiCreatePlay.editScene);
 
   useEffect(() => {
-    const allFiguresAssigned = scene.figures.every(
-      (figure) => figure.assignedUser && figure.assignedUser.trim() !== ""
+    const figures = scene.figures || [];
+    const allFiguresAssigned = figures.every(
+      (figure) => Array.isArray(figure.actorList) && figure.actorList.length > 0
     );
     const valid =
       scene.name.trim() !== "" &&
       scene.notes.trim() !== "" &&
-      scene.figures.length > 0 &&
+      figures.length > 0 &&
       allFiguresAssigned;
     setIsValid(valid);
   }, [scene]);
@@ -38,21 +40,17 @@ const Scene = ({ scene, onUpdateScene, onDeleteScene }) => {
     const newFigure = {
       id: Date.now().toString(),
       name: figureName,
-      assignedUser: "",
+      actorList: []
     };
     onUpdateScene(scene.id, { figures: [...scene.figures, newFigure] });
   };
 
-  const handleAssignUser = (figureId, userId) => {
-    const updatedFigures = scene.figures.map((figure) =>
-      figure.id === figureId ? { ...figure, assignedUser: userId } : figure
-    );
-    onUpdateScene(scene.id, { figures: updatedFigures });
+  const handleAssignActors = (figureId, actorList) => {
+    handleAssignActorsToFigure(scene.id, figureId, actorList);
   };
 
   const handleDeleteFigure = (figureId) => {
-    const updatedFigures = scene.figures.filter((figure) => figure.id !== figureId);
-    onUpdateScene(scene.id, { figures: updatedFigures });
+    onUpdateScene(scene.id, { figures: scene.figures.filter((figure) => figure.id !== figureId) });
   };
 
   const handleFinishScene = () => {
@@ -74,18 +72,12 @@ const Scene = ({ scene, onUpdateScene, onDeleteScene }) => {
       </div>
       {!scene.isFinished ? (
         <>
-          <SceneNameForm
-            initialName={scene.name}
-            onSubmit={handleNameSubmit}
-          />
-          <SceneNotesForm
-            initialNotes={scene.notes}
-            onSubmit={handleNotesSubmit}
-          />
+          <SceneNameForm initialName={scene.name} onSubmit={handleNameSubmit} />
+          <SceneNotesForm initialNotes={scene.notes} onSubmit={handleNotesSubmit} />
           <SceneFiguresList
             figures={scene.figures}
             onAddFigure={handleAddFigure}
-            onAssignUser={handleAssignUser}
+            onAssignActors={handleAssignActors}
             onDeleteFigure={handleDeleteFigure}
           />
           <SceneFinishButton onFinishScene={handleFinishScene} isValid={isValid} />
@@ -98,14 +90,11 @@ const Scene = ({ scene, onUpdateScene, onDeleteScene }) => {
             <div>
               <strong><Lsi lsi={lsiCreatePlay.figuresAndActorsLabel} /></strong>
               <ul>
-                {scene.figures.map((figure) => {
-                  const actor = actors.find((actor) => actor.id === figure.assignedUser);
-                  return (
-                    <li key={figure.id}>
-                      {figure.name} - {actor ? actor.name : <Lsi lsi={lsiCreatePlay.unassigned} />}
-                    </li>
-                  );
-                })}
+                {scene.figures.map((figure) => (
+                  <li key={figure.id}>
+                    {figure.name} - {figure.actorList.length > 0 ? figure.actorList.map((uuId) => <PersonItem key={uuId} uuIdentity={uuId} />) : <Lsi lsi={lsiCreatePlay.unassigned} />}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

@@ -1,14 +1,22 @@
-// PlaySelectionModal.js
-import React from "react";
+// src/components/dashboard/PlaySelectionModal.js
+
+import React, { useState } from "react";
 import { useDataContext } from "../../context/DashboardContext";
 import { Lsi } from "uu5g05";
 import lsiDashboard from "../../lsi/lsi-dashboard";
 
 const PlaySelectionModal = ({ isOpen, onClose, onSelectPlay }) => {
-  const { plays } = useDataContext();
+  const { plays, locations } = useDataContext();
+  const [selectedPlayId, setSelectedPlayId] = useState("");
+  const [selectedLocationId, setSelectedLocationId] = useState("");
 
-  const handleSelect = (e) => {
-    onSelectPlay(e.target.value);
+  const handleSubmit = () => {
+    if (selectedPlayId && selectedLocationId) {
+      onSelectPlay(selectedPlayId, selectedLocationId);
+    } else {
+      // Přidání notifikace nebo upozornění pro uživatele
+      alert("Prosím, vyberte hru a lokaci.");
+    }
   };
 
   if (!isOpen) return null;
@@ -19,7 +27,12 @@ const PlaySelectionModal = ({ isOpen, onClose, onSelectPlay }) => {
         <h2 className="modal-header"><Lsi lsi={lsiDashboard.selectPlay} /></h2>
         <div className="modal-form-group">
           <label><Lsi lsi={lsiDashboard.playLabel} /></label>
-          <select onChange={handleSelect} className="modal-select" defaultValue="">
+          <select
+            onChange={(e) => setSelectedPlayId(e.target.value)}
+            value={selectedPlayId}
+            className="modal-select"
+            required
+          >
             <option value="" disabled>
               <Lsi lsi={lsiDashboard.selectPlay} />
             </option>
@@ -30,7 +43,28 @@ const PlaySelectionModal = ({ isOpen, onClose, onSelectPlay }) => {
             ))}
           </select>
         </div>
+        <div className="modal-form-group">
+          <label><Lsi lsi={lsiDashboard.selectLocation} /></label>
+          <select
+            onChange={(e) => setSelectedLocationId(e.target.value)}
+            value={selectedLocationId}
+            className="modal-select"
+            required
+          >
+            <option value="" disabled>
+              <Lsi lsi={lsiDashboard.selectLocation} />
+            </option>
+            {locations.filter(loc => loc.active).map((loc) => (
+              <option key={loc.id} value={loc.id}>
+                {loc.name} - {loc.address}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="modal-buttons">
+          <button onClick={handleSubmit} className="modal-submit-button">
+            <Lsi lsi={lsiDashboard.submit} />
+          </button>
           <button onClick={onClose} className="modal-cancel-button">
             <Lsi lsi={lsiDashboard.cancel} />
           </button>

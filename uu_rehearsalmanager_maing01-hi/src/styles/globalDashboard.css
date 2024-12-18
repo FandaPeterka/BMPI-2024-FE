@@ -424,3 +424,14 @@
         padding: 10px 16px;
     }
 }
+
+  
+  .notification-icon {
+    cursor: pointer;
+    color: #F2C83B;
+    font-size: 1.2em;
+  }
+  
+  .notification-icon:hover {
+    color: white;
+  }

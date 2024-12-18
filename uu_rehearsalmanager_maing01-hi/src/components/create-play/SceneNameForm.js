@@ -1,12 +1,17 @@
-// SceneNameForm.js
-import React, { useState } from "react";
+// src/components/create-play/SceneNameForm.js
+
+import React, { useState, useEffect } from "react";
 import { Lsi, useLsi } from "uu5g05";
 import lsiCreatePlay from "../../lsi/lsi-createplay";
 
 const SceneNameForm = ({ initialName, onSubmit }) => {
-  const [name, setName] = useState(initialName);
+  const [name, setName] = useState(initialName || "");
   const placeholderText = useLsi(lsiCreatePlay.sceneNamePlaceholder);
   const editNameText = useLsi(lsiCreatePlay.editName);
+
+  useEffect(() => {
+    setName(initialName || "");
+  }, [initialName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

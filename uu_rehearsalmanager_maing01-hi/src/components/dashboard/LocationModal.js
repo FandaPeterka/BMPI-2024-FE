@@ -1,15 +1,25 @@
-// LocationModal.js
-import React, { useState } from "react";
+// src/components/dashboard/LocationModal.js
+
+import React, { useState, useEffect } from "react";
 import { useDataContext } from "../../context/DashboardContext";
 import { Lsi } from "uu5g05";
 import lsiDashboard from "../../lsi/lsi-dashboard";
 
 const LocationModal = ({ isOpen, onClose, onSubmit, initialLocationId }) => {
-  const { locations } = useDataContext();
+  const { locations, reloadLocations } = useDataContext();
   const [locationId, setLocationId] = useState(initialLocationId || "");
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    setLocationId(initialLocationId || "");
+  }, [initialLocationId, isOpen]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     onSubmit(locationId);
+  };
+
+  const handleSelectBoxFocus = () => {
+    reloadLocations(); // Načte nejnovější lokace
   };
 
   if (!isOpen) return null;
@@ -18,29 +28,35 @@ const LocationModal = ({ isOpen, onClose, onSubmit, initialLocationId }) => {
     <div className="modal-overlay">
       <div className="modal">
         <h2 className="modal-header"><Lsi lsi={lsiDashboard.locationModalTitle} /></h2>
-        <div className="modal-form-group">
-          <label><Lsi lsi={lsiDashboard.locationLabel} /></label>
-          <select
-            value={locationId}
-            onChange={(e) => setLocationId(e.target.value)}
-            className="modal-select"
-          >
-            <option value="">{<Lsi lsi={lsiDashboard.selectLocation} />}</option>
-            {locations.filter(loc => loc.active).map((loc) => (
-              <option key={loc.id} value={loc.id}>
-                {loc.name} - {loc.address}
+        <form onSubmit={handleSubmit}>
+          <div className="modal-form-group">
+            <label><Lsi lsi={lsiDashboard.locationLabel} /></label>
+            <select
+              value={locationId}
+              onChange={(e) => setLocationId(e.target.value)}
+              onFocus={handleSelectBoxFocus} // Přidáno
+              className="modal-select"
+              required
+            >
+              <option value="">
+                <Lsi lsi={lsiDashboard.selectLocation} />
               </option>
-            ))}
-          </select>
-        </div>
-        <div className="modal-buttons">
-          <button onClick={handleSubmit} className="modal-submit-button">
-            <Lsi lsi={lsiDashboard.submit} />
-          </button>
-          <button onClick={onClose} className="modal-cancel-button">
-            <Lsi lsi={lsiDashboard.cancel} />
-          </button>
-        </div>
+              {locations.filter(loc => loc.active).map((loc) => (
+                <option key={loc.id} value={loc.id}>
+                  {loc.name} - {loc.address}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="modal-buttons">
+            <button type="submit" className="modal-submit-button">
+              <Lsi lsi={lsiDashboard.submit} />
+            </button>
+            <button type="button" onClick={onClose} className="modal-cancel-button">
+              <Lsi lsi={lsiDashboard.cancel} />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

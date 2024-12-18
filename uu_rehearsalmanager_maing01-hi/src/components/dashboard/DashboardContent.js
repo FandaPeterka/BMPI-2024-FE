@@ -1,3 +1,5 @@
+// src/components/dashboard/DashboardContent.js
+
 import React, { useState } from "react";
 import { useDataContext } from "../../context/DashboardContext";
 import UsersList from "./UsersList";
@@ -6,12 +8,22 @@ import RehearsalTerm from "./RehearsalTerm";
 import RehearsalConfirmation from "./RehearsalConfirmation";
 import PlaySelectionModal from "./PlaySelectionModal";
 import CreateLocationButton from "./CreateLocationButton";
+import NotificationList from "./NotificationList";
 import { FaPlusCircle, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Lsi } from "uu5g05";
 import lsiDashboard from "../../lsi/lsi-dashboard";
 
 const DashboardContent = () => {
-  const { actors, rehearsals, plays, addRehearsal, updatePresenceStatus } = useDataContext();
+  const {
+    rehearsals,
+    plays,
+    addRehearsal,
+    updatePresenceStatus,
+    membersByRehearsal,
+    currentUserUuIdentity,
+    userRoles, // Přidáno
+  } = useDataContext();
+
   const [isPlayModalOpen, setIsPlayModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxDisplayed = 4;
@@ -20,17 +32,16 @@ const DashboardContent = () => {
     setIsPlayModalOpen(true);
   };
 
-  const handleSelectPlay = (playId) => {
+  const handleSelectPlay = (playId, locationId) => {
     const selectedPlay = plays.find((play) => play.id === playId);
     if (selectedPlay) {
       const newRehearsal = {
-        id: (rehearsals.length + 1).toString(),
         playName: selectedPlay.name,
-        locationId: "",
+        locationId: locationId,
         date: "",
         valid: false,
         sceneList: [],
-        presenceList: [],
+        presenceList: []
       };
       addRehearsal(newRehearsal);
     }
@@ -38,10 +49,12 @@ const DashboardContent = () => {
   };
 
   const handleAccept = (rehearsalId, userId) => {
+    if (!userId) return;
     updatePresenceStatus(rehearsalId, userId, "Accepted");
   };
 
   const handleRefuse = (rehearsalId, userId) => {
+    if (!userId) return;
     updatePresenceStatus(rehearsalId, userId, "Refused");
   };
 
@@ -59,6 +72,13 @@ const DashboardContent = () => {
 
   const displayedRehearsals = rehearsals.slice(currentIndex, currentIndex + maxDisplayed);
 
+  let userSet = new Set();
+  displayedRehearsals.forEach(r => {
+    const members = membersByRehearsal[r.id] || [];
+    members.forEach(m => userSet.add(m));
+  });
+  const users = Array.from(userSet);
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header-container">
@@ -67,7 +87,9 @@ const DashboardContent = () => {
           onClick={handlePrev}
           title={<Lsi lsi={lsiDashboard.previous} />}
         />
-        <h1 className="dashboard-header"><Lsi lsi={lsiDashboard.dashboard} /></h1>
+        <h1 className="dashboard-header">
+          <Lsi lsi={lsiDashboard.dashboard} />
+        </h1>
         <FaArrowRight
           className={`header-nav-icon ${currentIndex + maxDisplayed >= rehearsals.length ? "disabled" : ""}`}
           onClick={handleNext}
@@ -79,25 +101,34 @@ const DashboardContent = () => {
         <table className="dashboard-table">
           <thead>
             <tr>
-              <th className="dashboard-table-header"><Lsi lsi={lsiDashboard.usersListHeader} /></th>
+              <th className="dashboard-table-header">
+                <Lsi lsi={lsiDashboard.usersListHeader} />
+              </th>
               {displayedRehearsals.map((rehearsal) => (
                 <th key={rehearsal.id} className="dashboard-table-header">
                   <div className="rehearsal-header">
                     <strong>{rehearsal.playName}</strong>
                     <RehearsalLocation locationId={rehearsal.locationId} rehearsalId={rehearsal.id} />
-                    <RehearsalTerm term={new Date(rehearsal.date).toLocaleString()} rehearsalId={rehearsal.id} />
+                    <RehearsalTerm term={rehearsal.date} rehearsalId={rehearsal.id} />
                     <RehearsalConfirmation valid={rehearsal.valid} rehearsalId={rehearsal.id} />
                   </div>
                 </th>
               ))}
               <th className="dashboard-table-header">
-                <FaPlusCircle className="add-icon" onClick={handleAddRehearsal} title={<Lsi lsi={lsiDashboard.addRehearsal} />} />
+                {/* Kontrola, zda uživatel má roli "Organizers" */}
+                {userRoles.includes("Organizers") && (
+                  <FaPlusCircle
+                    className="add-icon"
+                    onClick={handleAddRehearsal}
+                    title={<Lsi lsi={lsiDashboard.addRehearsal} />}
+                  />
+                )}
               </th>
             </tr>
           </thead>
           <tbody>
             <UsersList
-              users={actors}
+              users={users}
               displayedRehearsals={displayedRehearsals}
               handleAccept={handleAccept}
               handleRefuse={handleRefuse}
@@ -110,6 +141,7 @@ const DashboardContent = () => {
         onClose={() => setIsPlayModalOpen(false)}
         onSelectPlay={handleSelectPlay}
       />
+      <NotificationList />
     </div>
   );
 };

@@ -1,4 +1,5 @@
-// CPTitle.js
+// src/components/create-play/CPTitle.js
+
 import React from "react";
 
 const CPTitle = ({ title }) => {

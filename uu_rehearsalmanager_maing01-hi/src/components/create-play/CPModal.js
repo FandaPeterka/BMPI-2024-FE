@@ -1,4 +1,5 @@
-// CPModal.js
+// src/components/create-play/CPModal.js
+
 import React from "react";
 import { FaTimes, FaPlayCircle } from "react-icons/fa";
 import { Lsi, useLsi } from "uu5g05";

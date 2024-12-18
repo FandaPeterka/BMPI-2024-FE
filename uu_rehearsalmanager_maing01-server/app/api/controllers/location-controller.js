@@ -12,6 +12,10 @@ class LocationController {
     return LocationAbl.create(ucEnv);
   }
 
+  update(ucEnv) {
+    return LocationAbl.update(ucEnv);
+  }
+
 }
 
 module.exports = new LocationController();

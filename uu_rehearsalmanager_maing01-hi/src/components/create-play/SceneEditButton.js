@@ -1,4 +1,5 @@
-// SceneEditButton.js
+// src/components/create-play/SceneEditButton.js
+
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { Lsi, useLsi } from "uu5g05";

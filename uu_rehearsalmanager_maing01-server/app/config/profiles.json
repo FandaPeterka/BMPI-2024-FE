@@ -54,6 +54,10 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },
+      "location/update": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
       "rehearsal/create": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
@@ -71,6 +75,18 @@
         "profileList": ["Public"]
       },
       "actor/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "notification/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "notification/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "notification/update": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
       }

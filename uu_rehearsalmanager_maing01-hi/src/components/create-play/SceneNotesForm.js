@@ -1,12 +1,17 @@
-// SceneNotesForm.js
-import React, { useState } from "react";
+// src/components/create-play/SceneNotesForm.js
+
+import React, { useState, useEffect } from "react";
 import { Lsi, useLsi } from "uu5g05";
 import lsiCreatePlay from "../../lsi/lsi-createplay";
 
 const SceneNotesForm = ({ initialNotes, onSubmit }) => {
-  const [notes, setNotes] = useState(initialNotes);
+  const [notes, setNotes] = useState(initialNotes || "");
   const placeholderText = useLsi(lsiCreatePlay.sceneNotesPlaceholder);
   const editNotesText = useLsi(lsiCreatePlay.editNotes);
+
+  useEffect(() => {
+    setNotes(initialNotes || "");
+  }, [initialNotes]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

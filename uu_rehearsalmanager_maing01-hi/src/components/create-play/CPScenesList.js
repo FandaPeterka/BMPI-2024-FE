@@ -1,4 +1,5 @@
-// CPScenesList.js
+// src/components/create-play/CPScenesList.js
+
 import React, { useRef } from "react";
 import Scene from "./Scene";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
